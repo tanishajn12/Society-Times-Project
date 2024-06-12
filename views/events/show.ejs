@@ -1,0 +1,16 @@
+<%- include('../partials/header') %>
+
+<h1>Displaying a particular event</h1>
+
+<div>
+    <h1><%= foundEvent.name %></h1>
+    <img src="<%= foundEvent.img %>" alt="">
+    <h3>Date: <%= foundEvent.date.toDateString() %></h3>
+    <p>Time: <%= foundEvent.time %></p>
+    <p>Society: <%= foundEvent.society %></p>
+    <p>Venue: <%= foundEvent.venue %></p>
+    <p>Type: <%= foundEvent.type %></p>
+    <p>Description: <%= foundEvent.desc %></p>
+</div>
+
+<%- include('../partials/footer') %>

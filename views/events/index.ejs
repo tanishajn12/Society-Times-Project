@@ -1,0 +1,37 @@
+<%- include('../partials/header') %>
+
+<div class="container mt-5">
+    <h1>Displaying All The Events</h1>
+    
+    <div class="row">
+        <% for (let event of events) { %>
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4 event-card">
+                <div class="card text-center shadow h-100">
+                    <img class="card-img-top img-fluid" src="<%= event.img %>" alt="<%= event.name %>">
+                    <div class="card-body">
+                        <h3 class="card-title"><%= event.name %></h3>
+                        <h5 class="card-title">Date: <%= new Date(event.date).toDateString() %></h5>
+                        <h5 class="card-title">Time: <%= event.time %></h5>
+                        <p class="card-text">Society: <%= event.society %></p>
+                        <p class="card-text">Venue: <%= event.venue %></p>
+                        <p class="card-text">Type: <%= event.type %></p>
+                        <p class="card-text"><%= event.desc.substring(0, 100) %>...</p>
+                        <% if (event.registerLink) { %>
+                            <p><a href="<%= event.registerLink %>" class="btn btn-info">Register Here</a></p>
+                        <% } %>
+                        <a href="/events/<%= event._id %>" class="btn btn-primary">View Event</a>
+                    
+                        <a href="/events/<%= event._id %>/edit" class="btn btn-warning">Edit Event</a>
+                        <form action="/events/<%= event._id %>?_method=DELETE" method="POST" class="d-inline">
+                            <button class="btn btn-danger">Delete Event</button>
+                        </form>
+                    
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </div>
+</div>
+
+<script src="/js/common.js"></script>
+<%- include('../partials/footer') %>

@@ -1,0 +1,41 @@
+<%- include('../partials/header') %>
+
+<h1>New Event Form</h1>
+
+<form action="/events" method="POST">
+    <div>
+        <label for="eventName">Name: </label>
+        <input type="text" name="name" id="eventName">
+    </div>
+    <div>
+        <label for="eventImage">Image: </label>
+        <input type="text" name="img" id="eventImage">
+    </div>
+    <div>
+        <label for="eventDate">Date: </label>
+        <input type="date" name="date" id="eventDate">
+    </div>
+    <div>
+        <label for="eventTime">Time: </label>
+        <input type="text" name="time" id="eventTime">
+    </div>
+    <div>
+        <label for="eventSociety">Society: </label>
+        <input type="text" name="society" id="eventSociety">
+    </div>
+    <div>
+        <label for="eventVenue">Venue: </label>
+        <input type="text" name="venue" id="eventVenue">
+    </div>
+    <div>
+        <label for="eventType">Type: </label>
+        <input type="text" name="type" id="eventType">
+    </div>
+    <div>
+        <label for="eventDesc">Description: </label>
+        <textarea name="desc" id="eventDesc" rows="3"></textarea>
+    </div>
+    <button type="submit">Add Event</button>
+</form>
+
+<%- include('../partials/footer') %>
