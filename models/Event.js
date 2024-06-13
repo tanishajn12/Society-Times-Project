@@ -38,6 +38,10 @@ const eventSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
+    registerLink: {
+        type: String,
+        trim: true
+    },
     reviews: [
         {
             type: mongoose.Schema.Types.ObjectId,
@@ -47,10 +51,6 @@ const eventSchema = new mongoose.Schema({
     author: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    },
-    registerLink: {
-        type: String,
-        trim: true
     }
 });
 
