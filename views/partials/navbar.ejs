@@ -1,4 +1,4 @@
-<!-- <nav class="navbar fixed-top navbar-expand-lg" style="background-color: #0077b6;">
+<nav class="navbar fixed-top navbar-expand-lg" style="background-color: #0077b6;">
     <div class="container">
       <a class="navbar-brand" href="/">Shopping App</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,21 +16,21 @@
             <a class="nav-link" href="/events">Events</a>
           </li>
           <li class="nav-item">
-            <% if(currentUser && currentUser.role === "seller") { %>
-              <a class="nav-link" href="/event/new">New</a>
+            <% if (currentUser && currentUser.role === "admin") { %>
+              <a class="nav-link" href="/product/new">New</a>
             <% } %>
           </li>
         </ul>
         <div class="d-flex" role="search">
-          <% if(!currentUser) { %>
+          <% if (!currentUser) { %>
             <a class="mx-2" href="/login"><button class="btn btn-outline-info" type="submit">Login</button></a>
             <a class="mx-2" href="/signup"><button class="btn btn-outline-info" type="submit">Signup</button></a>
           <% } else { %>
             <a href="#" class="nav-link text-capitalize">Hello <%= currentUser.username %></a>
-            <a href="/user/cart" class="nav-link"><i class="fas fa-shopping-cart"></i>
-              <sup><span class="badge bg-danger"><%= currentUser.cart.length %></span></sup>
-            </a>
             <a class="mx-2" href="/logout"><button class="btn btn-outline-info" type="submit">Logout</button></a>
           <% } %>
         </div>
-      </div> -->
+      </div>
+    </div>
+  </nav>
+  

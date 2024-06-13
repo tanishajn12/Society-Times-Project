@@ -33,7 +33,7 @@ router.get("/event/new", isLoggedIn, isAdmin, (req,res)=>{
 //validate product -> first check and then add
 router.post('/events', isLoggedIn, isAdmin, validateEvent, async (req, res) => {
     try {
-        const { name, img, date, time, society, venue, type, desc, registerLink } = req.body; // Destructure the event fields from the request body
+        const { name, img, date, time, society, venue, type, desc} = req.body; // Destructure the event fields from the request body
         await Event.create({name,
             img,
             date: new Date(date), // Ensure date is properly formatted
@@ -42,7 +42,6 @@ router.post('/events', isLoggedIn, isAdmin, validateEvent, async (req, res) => {
             venue,
             type,
             desc,
-            registerLink,
             author:req.user._id
         });
         req.flash('success', 'Event Added Successfully');

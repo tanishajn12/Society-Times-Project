@@ -4,8 +4,8 @@ const path = require("path");
 const mongoose = require('mongoose');
 const seedDB = require('./seed');
 const methodOverride = require('method-override');
-const flash = require("connect-flash");
 const session = require("express-session");
+const flash = require("connect-flash");
 const reviewRoutes = require("./routes/review");
 const eventRoutes = require("./routes/event");
 const authRoutes = require("./routes/auth");
@@ -28,7 +28,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(methodOverride('_method'));
-app.use(eventRoutes);
 
 let configSession = {
     secret: 'keyboard cat',
