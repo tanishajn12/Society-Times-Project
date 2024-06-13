@@ -4,8 +4,8 @@ const { reviewSchema } = require("./schema");
 
 
 const validateEvent = (req,res,next)=> {
-    let {name, img, date, time, society, venue, type, desc, registerLink} = req.body;
-    const {error}= eventSchema.validate({name, img, date, time, society, venue, type, desc, registerLink})
+    let {name, img, date, time, society, venue, type, desc} = req.body;
+    const {error}= eventSchema.validate({name, img, date, time, society, venue, type, desc})
     if(error){
         const msg = error.details.map((err)=>err.message).join(',')
         return res.render('error',{err:msg})

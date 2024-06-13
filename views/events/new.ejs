@@ -1,41 +1,108 @@
 <%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+<%- include('../partials/flash') %>
 
-<h1>New Event Form</h1>
+<div class="row" style="margin-top: 80px;">
+    <h1>New Event Form</h1>
+    <div class="col-6 mx-auto">
+        <form class="needs-validation" action="/events" method="POST" novalidate>
+            <div class="mb-3">
+                <label for="eventName" class="form-label">Event Name: </label>
+                <input type="text" class="form-control" name="name" id="eventName" placeholder="Name of Event" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter an event name.
+                </div>
+            </div>
 
-<form action="/events" method="POST">
-    <div>
-        <label for="eventName">Name: </label>
-        <input type="text" name="name" id="eventName">
-    </div>
-    <div>
-        <label for="eventImage">Image: </label>
-        <input type="text" name="img" id="eventImage">
-    </div>
-    <div>
-        <label for="eventDate">Date: </label>
-        <input type="date" name="date" id="eventDate">
-    </div>
-    <div>
-        <label for="eventTime">Time: </label>
-        <input type="text" name="time" id="eventTime">
-    </div>
-    <div>
-        <label for="eventSociety">Society: </label>
-        <input type="text" name="society" id="eventSociety">
-    </div>
-    <div>
-        <label for="eventVenue">Venue: </label>
-        <input type="text" name="venue" id="eventVenue">
-    </div>
-    <div>
-        <label for="eventType">Type: </label>
-        <input type="text" name="type" id="eventType">
-    </div>
-    <div>
-        <label for="eventDesc">Description: </label>
-        <textarea name="desc" id="eventDesc" rows="3"></textarea>
-    </div>
-    <button type="submit">Add Event</button>
-</form>
+            <div class="mb-3">
+                <label for="eventImage" class="form-label">Image URL: </label>
+                <input type="url" class="form-control" name="img" id="eventImage" placeholder="Image URL of Event">
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter an image URL.
+                </div>
+            </div>
 
+            <div class="mb-3">
+                <label for="eventDate" class="form-label">Date: </label>
+                <input type="date" class="form-control" name="date" id="eventDate" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter a date.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="eventTime" class="form-label">Time: </label>
+                <input type="time" class="form-control" name="time" id="eventTime" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter a time.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="eventSociety" class="form-label">Society: </label>
+                <input type="text" class="form-control" name="society" id="eventSociety" placeholder="Society Name" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter a society name.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="eventVenue" class="form-label">Venue: </label>
+                <input type="text" class="form-control" name="venue" id="eventVenue" placeholder="Venue of Event" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter a venue.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="eventType" class="form-label">Type: </label>
+                <input type="text" class="form-control" name="type" id="eventType" placeholder="Type of Event" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter an event type.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="eventDesc" class="form-label">Description: </label>
+                <textarea class="form-control" name="desc" id="eventDesc" rows="5" placeholder="Description of Event"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="registerLink" class="form-label">Registration Link: </label>
+                <input type="url" class="form-control" name="registerLink" id="registerLink" placeholder="Registration Link">
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter a registration link.
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-sm btn-success">Add Event</button>
+        </form>
+    </div>
+</div>
+
+<script src="/js/script.js"></script>
 <%- include('../partials/footer') %>

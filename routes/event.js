@@ -20,7 +20,7 @@ router.get("/events", async (req,res)=> {
 // user must be logged in to add an product
 router.get("/event/new", isLoggedIn, isAdmin, (req,res)=>{
     try{
-        res.render('events/new'); 
+        res.render('event/new'); 
     }
 
     catch(e) {

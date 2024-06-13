@@ -16,7 +16,7 @@ const eventSchema = new mongoose.Schema({
         required: true
     },
     time: {
-        type: String,  // Storing time as a string, you might want to use a Date type if including a time component
+        type: String, 
         required: true
     },
     society: {
@@ -41,6 +41,7 @@ const eventSchema = new mongoose.Schema({
     registerLink: {
         type: String,
         trim: true
+        
     },
     reviews: [
         {
