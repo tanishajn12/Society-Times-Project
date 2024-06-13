@@ -1,47 +1,103 @@
-
 <%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+<%- include('../partials/flash') %>
 
-<h1>Edit Event Form</h1>
+<div class="row" style="margin-top: 80px;">
 
-<form action="/events/<%=foundEvent._id%>?_method=PATCH" method="POST">
-    <div>
-        <label for="eventName">Name: </label>
-        <input type="text" name="name" id="eventName" value="<%= foundEvent.name %>">
+    <h1>Edit Event Form</h1>
+    <div class="col-6 mx-auto">
+        <form class="needs-validation" action="/events/<%= foundEvent._id %>?_method=PATCH" method="POST" novalidate>
+            <div class="mb-3">
+                <label for="eventName" class="form-label">Event Name: </label>
+                <input type="text" class="form-control" name="name" id="eventName" value="<%= foundEvent.name %>" placeholder="Name of Event" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter an event name.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="eventImage" class="form-label">Image URL: </label>
+                <input type="url" class="form-control" name="img" id="eventImage" placeholder="Image URL of Event" value="<%= foundEvent.img %>">
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter an image URL.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="eventDate" class="form-label">Event Date: </label>
+                <input type="date" class="form-control" name="date" id="eventDate" value="<%= foundEvent.date.toISOString().split('T')[0] %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please choose an event date.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="eventTime" class="form-label">Event Time: </label>
+                <input type="text" class="form-control" name="time" id="eventTime" placeholder="Time of Event" value="<%= foundEvent.time %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter an event time.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="eventSociety" class="form-label">Society: </label>
+                <input type="text" class="form-control" name="society" id="eventSociety" placeholder="Society organizing the event" value="<%= foundEvent.society %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter the society name.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="eventVenue" class="form-label">Venue: </label>
+                <input type="text" class="form-control" name="venue" id="eventVenue" placeholder="Venue of Event" value="<%= foundEvent.venue %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter the event venue.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="eventType" class="form-label">Type: </label>
+                <input type="text" class="form-control" name="type" id="eventType" placeholder="Type of Event" value="<%= foundEvent.type %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter the event type.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="eventDesc" class="form-label">Description: </label>
+                <textarea class="form-control" name="desc" id="eventDesc" rows="5" placeholder="Description of Event" required><%= foundEvent.desc %></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter a description.
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-sm btn-success">Save Changes</button>
+        </form>
     </div>
-    <div>
-        <label for="eventImage">Image: </label>
-        <input type="text" name="img" id="eventImage" value="<%= foundEvent.img %>">
-    </div>
-    <div>
-        <label for="eventDate">Date: </label>
-        <input type="date" name="date" id="eventDate" value="<%= foundEvent.date.toISOString().split('T')[0] %>">
-    </div>
-    <div>
-        <label for="eventTime">Time: </label>
-        <input type="text" name="time" id="eventTime" value="<%= foundEvent.time %>">
-    </div>
-    <div>
-        <label for="eventSociety">Society: </label>
-        <input type="text" name="society" id="eventSociety" value="<%= foundEvent.society %>">
-    </div>
-    <div>
-        <label for="eventVenue">Venue: </label>
-        <input type="text" name="venue" id="eventVenue" value="<%= foundEvent.venue %>">
-    </div>
-    <div>
-        <label for="eventType">Type: </label>
-        <input type="text" name="type" id="eventType" value="<%= foundEvent.type %>">
-    </div>
-    <div>
-        <label for="eventDesc">Description: </label>
-        <textarea name="desc" id="eventDesc" rows="3"><%= foundEvent.desc %></textarea>
-    </div>
-    <div>
-        <label for="registerLink">Registration Link: </label>
-        <input type="url" name="registerLink" id="registerLink" value="<%=foundEvent.registerLink%>">
-    </div>
-    
-    <button type="submit">Edit Event</button>
-</form>
+</div>
 
 <%- include('../partials/footer') %>

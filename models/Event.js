@@ -38,11 +38,6 @@ const eventSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-    registerLink: {
-        type: String,
-        trim: true
-        
-    },
     reviews: [
         {
             type: mongoose.Schema.Types.ObjectId,

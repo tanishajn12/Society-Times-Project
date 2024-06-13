@@ -1,16 +1,76 @@
 <%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+<%- include('../partials/flash') %>
 
-<h1>Displaying a particular event</h1>
+<div class="row mt-5">
+    <h2>Displaying a Particular Event</h2>
+    <div class="col-lg-6 event-card mt-5">
+        <div class="card shadow mt-3 mx-auto" style="width: 22rem;">
+            <img class="img" src="<%= foundEvent.img %>" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h3 class="card-title text-center"><%= foundEvent.name %></h3>
+                <h5 class="card-title">Date: <%= foundEvent.date.toDateString() %></h5>
+                <p class="card-text">Time: <%= foundEvent.time %></p>
+                <p class="card-text">Society: <%= foundEvent.society %></p>
+                <p class="card-text">Venue: <%= foundEvent.venue %></p>
+                <p class="card-text">Type: <%= foundEvent.type %></p>
+                <p class="card-text">Description: <%= foundEvent.desc %></p>
+                <a href="<%= foundEvent.registerLink %>" class="btn btn-success">Register</a>
+                <a href="#" class="btn btn-secondary">Book</a>
+                <% if (currentUser && currentUser.role === "admin") { %>
+                    <a href="/events/<%= foundEvent._id %>/edit" class="btn btn-info">Edit Event</a>
+                    <form class="d-inline-block" action="/events/<%= foundEvent._id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger btn-sm">Delete Event</button>
+                    </form>
+                <% } %>
+            </div>
+        </div>
+    </div>
 
-<div>
-    <h1><%= foundEvent.name %></h1>
-    <img src="<%= foundEvent.img %>" alt="">
-    <h3>Date: <%= foundEvent.date.toDateString() %></h3>
-    <p>Time: <%= foundEvent.time %></p>
-    <p>Society: <%= foundEvent.society %></p>
-    <p>Venue: <%= foundEvent.venue %></p>
-    <p>Type: <%= foundEvent.type %></p>
-    <p>Description: <%= foundEvent.desc %></p>
+    <div class="col-lg-4 mt-5">
+        <h2 class="display-5">Leave your review</h2>
+        <form action="/events/<%= foundEvent._id %>/review" method="POST">
+            <div class="mb-3">
+                <label class="form-label" for="stars">Rating: </label>
+                <fieldset class="starability-basic">
+                    <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
+                    <input type="radio" id="first-rate1" name="rating" value="1" />
+                    <label for="first-rate1" title="Terrible">1 star</label>
+                    <input type="radio" id="first-rate2" name="rating" value="2" />
+                    <label for="first-rate2" title="Not good">2 stars</label>
+                    <input type="radio" id="first-rate3" name="rating" value="3" />
+                    <label for="first-rate3" title="Average">3 stars</label>
+                    <input type="radio" id="first-rate4" name="rating" value="4" />
+                    <label for="first-rate4" title="Very good">4 stars</label>
+                    <input type="radio" id="first-rate5" name="rating" value="5" />
+                    <label for="first-rate5" title="Amazing">5 stars</label>
+                </fieldset>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="comment">Comment: </label>
+                <textarea class="form-control" name="comment" id="comment" rows="3"></textarea>
+            </div>
+            <button class="btn btn-sm btn-success">Submit</button>
+        </form>
+
+        <div class="my-3">
+            <% for (let review of foundEvent.reviews) { %>
+                <div class="card mb-3">
+                    <div class="card-header">Rating: <%= review.rating %></div>
+                    <div class="card-body">
+                        <p class="starability-result" data-rating="<%= review.rating %>">
+                            Rated: <%= review.rating %> stars
+                        </p>
+                        <p class="card-text">Comment: <%= review.comment %></p>
+                        <% if (review.createdAt) { %>
+                            <p class="text-muted"><%= review.createdAt.toDateString() %></p>
+                        <% } %>
+                        <button class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
 </div>
 
 <%- include('../partials/footer') %>

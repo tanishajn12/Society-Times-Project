@@ -1,8 +1,9 @@
-const express=  require("express");
+const express =  require("express");
 const Event = require('../models/Event');
 const Review = require('../models/Review');
 
-const {validateEvent, validateReview, isLoggedIn, isAdmin,isEventAuthor}=require('../middleware');
+const {validateEvent, isLoggedIn, isAdmin, isEventAuthor}=require('../middleware');
+
 const router = express.Router(); //same work as app
 
 router.get("/events", async (req,res)=> {
@@ -20,7 +21,7 @@ router.get("/events", async (req,res)=> {
 // user must be logged in to add an product
 router.get("/event/new", isLoggedIn, isAdmin, (req,res)=>{
     try{
-        res.render('event/new'); 
+        res.render('events/new'); 
     }
 
     catch(e) {
@@ -33,8 +34,9 @@ router.get("/event/new", isLoggedIn, isAdmin, (req,res)=>{
 //validate product -> first check and then add
 router.post('/events', isLoggedIn, isAdmin, validateEvent, async (req, res) => {
     try {
-        const { name, img, date, time, society, venue, type, desc} = req.body; // Destructure the event fields from the request body
-        await Event.create({name,
+        let { name, img, date, time, society, venue, type, desc} = req.body; // Destructure the event fields from the request body
+        await Event.create({
+            name,
             img,
             date: new Date(date), // Ensure date is properly formatted
             time,
@@ -80,9 +82,9 @@ router.get('/events/:id/edit',  async (req,res)=> {
 router.patch('/events/:id', isLoggedIn, validateEvent, isAdmin, isEventAuthor,  async(req, res) => {
     try {
         let { id } = req.params;
-        let { name, img, date, time, society, venue, type, desc, registerLink } = req.body;
+        let { name, img, date, time, society, venue, type, desc } = req.body;
 
-        await Event.findByIdAndUpdate(id, { name, img, date, time, society, venue, type, desc, registerLink });
+        await Event.findByIdAndUpdate(id, { name, img, date, time, society, venue, type, desc });
 
         req.flash('success', 'Event Edited Successfully');
         res.redirect('/events');  
@@ -98,15 +100,18 @@ router.delete('/events/:id', isLoggedIn, isAdmin, isEventAuthor, async (req, res
     try {
         let { id } = req.params;
         let foundEvent = await Event.findById(id);
+        
         //deleting reviews before deleting events
         for(let ids of foundEvent.reviews) {
             await Review.findByIdAndDelete(ids);
         }
+
         await Event.findByIdAndDelete(id);
         req.flash('success', 'Event Deleted Successfully');
         res.redirect('/events');
-    } catch (e) {
+    } 
     
+    catch (e) {
         res.render('error', { err: e.message });
     }
 });
