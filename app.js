@@ -4,6 +4,7 @@ const path = require("path");
 const eventRoutes = require("./routes/event");
 const mongoose = require('mongoose');
 const seedDB = require('./seed');
+const methodOverride = require('method-override');
 // const flash = require("connect-flash");
 
 mongoose.connect('mongodb://127.0.0.1:27017/college') //returns a promise
@@ -20,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 // For parsing application/json
 app.use(express.json());
 
-
+app.use(methodOverride('_method'));
 app.use(eventRoutes);
 
 // seedDB(); //run only once

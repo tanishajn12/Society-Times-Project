@@ -79,7 +79,7 @@ router.get('/events/:id/edit',  async (req,res)=> {
 })
 
 //actually changing the product
-router.patch('/events/:id',  async (req, res) => {
+router.patch('/events/:id',  async(req, res) => {
     try {
         let { id } = req.params;
         let { name, img, date, time, society, venue, type, desc, registerLink } = req.body;
@@ -87,8 +87,8 @@ router.patch('/events/:id',  async (req, res) => {
         await Event.findByIdAndUpdate(id, { name, img, date, time, society, venue, type, desc, registerLink });
 
         // req.flash('success', 'Event Edited Successfully');
-        res.redirect(`/events/${id}`);  // Redirect to the updated event's detail page
-    } 
+        res.redirect('/events');  
+    }
     
     catch (e) {
         // req.flash('error', 'Error updating event');
@@ -99,18 +99,6 @@ router.patch('/events/:id',  async (req, res) => {
 router.delete('/events/:id', async (req, res) => {
     try {
         let { id } = req.params;
-        let foundEvent = await Event.findById(id);
-        
-        if (!foundEvent) {
-            req.flash('error', 'Event not found');
-            return res.redirect('/events');
-        }
-        
-        // // Deleting associated reviews before deleting the event
-        // for (let reviewId of foundEvent.reviews) {
-        //     await Review.findByIdAndDelete(reviewId);
-        // }
-        
         await Event.findByIdAndDelete(id);
         // req.flash('success', 'Event Deleted Successfully');
         res.redirect('/events');
