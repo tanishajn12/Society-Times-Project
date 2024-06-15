@@ -8,6 +8,7 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const reviewRoutes = require("./routes/review");
 const eventRoutes = require("./routes/event");
+const registrationRoutes = require("./routes/registration")
 const authRoutes = require("./routes/auth");
 const passport= require('passport');
 const User = require("./models/User");
@@ -70,6 +71,7 @@ app.get("/",(req,res)=>{
 app.use(eventRoutes);
 app.use(reviewRoutes);
 app.use(authRoutes);
+app.use(registrationRoutes);
 // app.use(productApi);
 // app.use(cartRoutes);
 

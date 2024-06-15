@@ -4,7 +4,7 @@ const Event = require("../models/Event");
 const Review = require("../models/Review");
 const {validateReview, isLoggedIn} = require('../middleware')
 
-router.post('/events/:id/review', isLoggedIn,  async (req,res)=>{
+router.post('/events/:id/review', isLoggedIn, validateReview, async (req,res)=>{
     try{
         let {rating, comment} = req.body;
         let {id} = req.params;

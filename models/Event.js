@@ -51,7 +51,13 @@ const eventSchema = new mongoose.Schema({
     author: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    }
+    },
+    registrations: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Registration'
+        }
+    ],
 });
 
 // Create the Event model

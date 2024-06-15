@@ -67,6 +67,15 @@ router.get('/events/:id',  isLoggedIn, async (req, res) => {
     }
 });
 
+// Admin view for event registrations
+router.get('/events/:id/registrations', isLoggedIn,isEventAuthor, async (req, res) => {
+    const event = await Event.findById(req.params.id).populate({
+        path: 'registrations',
+        populate: { path: 'user' }
+    });
+    res.render('events/registrations', { event });
+});
+
 router.get('/events/:id/edit',  async (req,res)=> {
     try{
         let {id} = req.params;
