@@ -13,13 +13,13 @@
             </tr>
         </thead>
         <tbody>
-            <% event.registrations.forEach(registration => { %>
+            <%event.registrations.forEach(registration => { %>
                 <tr>
                     <td><%=registration.user.name%></td>
                     <td><%=registration.user.email%></td>
                     <td><%=registration.user.contactno%></td>
                 </tr>
-            <% }) %>
+            <%})%>
         </tbody>
     </table>
 </div>

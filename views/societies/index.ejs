@@ -1,0 +1,32 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+<%- include('../partials/flash') %>
+
+<div class="container mt-5">
+    <h1>All Societies</h1>
+    
+    <div class="row">
+        <% for (let society of societies) { %>
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4 society-card">
+                <div class="card text-center shadow h-100">
+                    <img class="card-img-top img-fluid" src="<%=society.img %>" alt="<%= society.name %>">
+                    <div class="card-body">
+                        <h3 class="card-title"><%= society.name %></h3>
+                        <p class="card-text">Type: <%= society.type %></p>
+                        <p class="card-text"><%= society.description.substring(0, 100) %>...</p>
+                        <% if(currentUser && currentUser.role === "admin"){ %>
+                            <a href="/societies/<%= society._id %>/edit" class="btn btn-warning">Edit Society</a>
+                            <form action="/societies/<%= society._id %>?_method=DELETE" method="POST" class="d-inline">
+                                <button class="btn btn-danger">Delete Society</button>
+                            </form>
+                        <% } %>
+                        <a href="/societies/<%= society._id %>" class="btn btn-primary">View Events</a>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </div>
+</div>
+
+<script src="/js/common.js"></script>
+<%- include('../partials/footer') %>

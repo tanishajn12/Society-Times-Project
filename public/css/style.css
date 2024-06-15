@@ -14,9 +14,6 @@
     
 }
 
-nav{
-    margin-bottom: 10px;
-}
 
 .navbar{
     background-color: white;
@@ -29,15 +26,7 @@ nav{
 
 .navbar-brand img{
     height: 50px;
-    width: 170px;
+    width: 160px;
 
 }
 
-.search{
-    height: 45px;
-    outline: none;
-    border:2px solid rgb(2, 56, 96);
-    background-color: transparent;
-    border-radius: 200px 0px 0px 20px ;
-    border-right: none;
-}

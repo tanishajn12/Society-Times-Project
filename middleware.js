@@ -1,6 +1,8 @@
 const Event = require("./models/Event");
+const Society = require("./models/Society");
 const { eventSchema } = require("./schema");
 const { reviewSchema } = require("./schema");
+const {societySchema} = require("./schema");
 
 
 const validateEvent = (req,res,next)=> {
@@ -23,6 +25,20 @@ const validateReview = (req,res,next) =>{
     next();
 }
 
+const validateSociety = (req,res,next) => {
+    let { name, type, description, email, instagram, linkedin } = req.body;
+    const {error} = societySchema.validate({name, type, description, email, instagram, linkedin})
+    if (error) {
+        const msg = error.details.map((err)=> err.message).join(',');
+        return res.render('error',{err:msg})
+    }
+        
+    next();
+}
+
+
+
+
 //middleware to ensure that only logged in user can perform the app functionality
 const isLoggedIn = (req,res,next)=>{
 
@@ -38,6 +54,9 @@ const isLoggedIn = (req,res,next)=>{
     }
     next();
 }
+
+
+
 
 const isAdmin = (req,res,next)=>{
     if(!req.user.role){
@@ -66,4 +85,15 @@ const isEventAuthor = async(req,res,next)=>{
     next();
 }
 
-module.exports = {validateEvent, validateReview, isLoggedIn, isAdmin,isEventAuthor}
+const isSocietyAdmin = async (req, res, next) => {
+    const { id } = req.params;
+    const society = await Society.findById(id);
+    if (!society.societyAdmin.equals(req.user._id)) {
+        req.flash('error', 'Permissions Denied');
+        return res.redirect(`/societies/${id}`);
+    }
+    next();
+};
+
+
+module.exports = {validateEvent, validateReview, validateSociety, isLoggedIn, isAdmin, isEventAuthor, isSocietyAdmin};

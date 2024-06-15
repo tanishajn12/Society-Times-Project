@@ -20,8 +20,8 @@ const eventSchema = new mongoose.Schema({
         required: true
     },
     society: {
-        type: String,
-        trim: true,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Society', // Reference to Society model
         required: true
     },
     venue: {

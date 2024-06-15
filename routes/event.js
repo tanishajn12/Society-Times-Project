@@ -1,5 +1,6 @@
 const express =  require("express");
 const Event = require('../models/Event');
+const Society = require('../models/Society');
 const Review = require('../models/Review');
 
 const {validateEvent, isLoggedIn, isAdmin, isEventAuthor}=require('../middleware');

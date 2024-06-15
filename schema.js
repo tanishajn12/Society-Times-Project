@@ -22,4 +22,13 @@ const reviewSchema = Joi.object({
     comment: Joi.string().required()
 });
 
-module.exports = { eventSchema, reviewSchema };
+const societySchema = Joi.object({
+    name: Joi.string().required(),
+    type: Joi.string().valid('Technical', 'Cultural', 'Social').required(),
+    description: Joi.string().required(),
+    email: Joi.string().email().required(),
+    instagram: Joi.string().uri().allow(''), // Allow empty string if no URL is provided
+    linkedin: Joi.string().uri().allow('') // Allow empty string if no URL is provided
+});
+
+module.exports = { eventSchema, reviewSchema, societySchema };
