@@ -1,3 +1,5 @@
+![Screenshot 2024-06-13 182104](https://github.com/tanishajn12/Society-Events-Project/assets/119069305/86a91da9-6c9e-4f4a-91cd-300a05ff2c4e)
+
 # "Society Times - Event Registrations & Management"
 
 Project Description : -
