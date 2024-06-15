@@ -38,6 +38,10 @@ const eventSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
+    registerLink: {
+        type: String,
+        trim: true
+    },
     reviews: [
         {
             type: mongoose.Schema.Types.ObjectId,
@@ -53,5 +57,7 @@ const eventSchema = new mongoose.Schema({
 // Create the Event model
 const Event = mongoose.model('Event', eventSchema);
 module.exports = Event;
+
+
 
 

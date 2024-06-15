@@ -34,7 +34,7 @@ router.get("/event/new", isLoggedIn, isAdmin, (req,res)=>{
 //validate product -> first check and then add
 router.post('/events', isLoggedIn, isAdmin, validateEvent, async (req, res) => {
     try {
-        let { name, img, date, time, society, venue, type, desc} = req.body; // Destructure the event fields from the request body
+        let { name, img, date, time, society, venue, type, desc, registerLink} = req.body; // Destructure the event fields from the request body
         await Event.create({
             name,
             img,
@@ -44,6 +44,7 @@ router.post('/events', isLoggedIn, isAdmin, validateEvent, async (req, res) => {
             venue,
             type,
             desc,
+            registerLink,
             author:req.user._id
         });
         req.flash('success', 'Event Added Successfully');
@@ -70,6 +71,7 @@ router.get('/events/:id/edit',  async (req,res)=> {
     try{
         let {id} = req.params;
         let foundEvent = await Event.findById(id);
+        console.log(foundEvent);
         res.render('events/edit',{foundEvent})
     }
 
@@ -80,14 +82,17 @@ router.get('/events/:id/edit',  async (req,res)=> {
 
 //actually changing the product
 router.patch('/events/:id', isLoggedIn, validateEvent, isAdmin, isEventAuthor,  async(req, res) => {
+    // console.log("Patch route hit");
     try {
-        let { id } = req.params;
-        let { name, img, date, time, society, venue, type, desc } = req.body;
+        let {id} = req.params;
+        let {name, img, date, time, society, venue, type, desc,registerLink } = req.body;
+        // console.log("Received data:", req.body);
 
-        await Event.findByIdAndUpdate(id, { name, img, date, time, society, venue, type, desc });
+        const event = await Event.findByIdAndUpdate(id, {name, img, date, time, society, venue, type, desc , registerLink});
+        // console.log("Updated Event : " , event);
 
         req.flash('success', 'Event Edited Successfully');
-        res.redirect('/events');  
+        res.redirect(`/events/${id}`);  
     }
     
     catch (e) {

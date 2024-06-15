@@ -62,6 +62,10 @@ app.use((req,res,next)=>{
     next();
 })
 
+app.get("/",(req,res)=>{
+    res.render("home");
+});
+
 //Routes
 app.use(eventRoutes);
 app.use(reviewRoutes);

@@ -87,6 +87,17 @@
                 <label for="eventDesc" class="form-label">Description: </label>
                 <textarea class="form-control" name="desc" id="eventDesc" rows="5" placeholder="Description of Event"></textarea>
             </div>
+
+            <div class="mb-3">
+                <label for="registerLink" class="form-label">Registration Link: </label>
+                <input type="url" class="form-control" name="registerLink" id="registerLink" placeholder="Registration Link for Event">
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter a registration link.
+                </div>
+            </div>
             <button type="submit" class="btn btn-sm btn-success">Add Event</button>
         </form>
     </div>

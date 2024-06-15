@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 let reviewSchema = new mongoose.Schema({
     rating : {
         type:Number,
@@ -16,3 +15,7 @@ let reviewSchema = new mongoose.Schema({
 
 let Review = mongoose.model('Review',reviewSchema);
 module.exports = Review;
+
+
+
+

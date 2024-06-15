@@ -1,5 +1,6 @@
 <%- include('../partials/header') %>
 <%- include('../partials/navbar') %>
+<%- include('../partials/flash') %>
 
 <div class="container mt-5">
     <h1>Displaying All The Events</h1>
@@ -15,17 +16,23 @@
                         <h5 class="card-title">Time: <%= event.time %></h5>
                         <p class="card-text">Society: <%= event.society %></p>
                         <p class="card-text">Venue: <%= event.venue %></p>
-                        <p class="card-text">Type: <%= event.type %></p>
-                        <p class="card-text"><%= event.desc.substring(0, 100) %>...</p>
-                        <% if (event.registerLink) { %>
+                        <!-- <p class="card-text">Type: <%= event.type %></p> -->
+                        <!-- <p class="card-text"><%= event.desc.substring(0, 100) %>...</p> -->
+                        <!-- <% if (event.registerLink) { %>
                             <p><a href="<%= event.registerLink %>" class="btn btn-info">Register Here</a></p>
-                        <% } %>
+                        <% } %> -->
                         <a href="/events/<%= event._id %>" class="btn btn-primary">View Event</a>
                     
-                        <a href="/events/<%= event._id %>/edit" class="btn btn-warning">Edit Event</a>
+                        <%if(currentUser && currentUser.role === "admin"){%>
+                            <a href="/events/<%=event._id%>/edit" class="btn btn-warning">Edit Event</a>
+                            <form action="/events/<%=event.id%>?_method=DELETE" method="POST" class="d-inline">
+                              <button class="btn btn-danger" >Delete Product</button>
+                            </form>
+                        <%}%>
+                        <!-- <a href="/events/<%= event._id %>/edit" class="btn btn-warning">Edit Event</a>
                         <form action="/events/<%= event._id %>?_method=DELETE" method="POST" class="d-inline">
                             <button class="btn btn-danger">Delete Event</button>
-                        </form>
+                        </form> -->
                     
                     </div>
                 </div>

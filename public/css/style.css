@@ -1,0 +1,43 @@
+*{
+    padding : 0;
+    margin : 0;
+    box-sizing: border-box;
+}
+
+.nav-item a {
+    text-decoration: none;
+    color:black;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-right: 15px;
+    transition: all 0.4s;
+    
+}
+
+nav{
+    margin-bottom: 10px;
+}
+
+.navbar{
+    background-color: white;
+   
+}
+
+.nav-item a:hover{
+    color:red;
+}
+
+.navbar-brand img{
+    height: 50px;
+    width: 170px;
+
+}
+
+.search{
+    height: 45px;
+    outline: none;
+    border:2px solid rgb(2, 56, 96);
+    background-color: transparent;
+    border-radius: 200px 0px 0px 20px ;
+    border-right: none;
+}
