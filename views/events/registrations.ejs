@@ -1,6 +1,10 @@
 <%- include('../partials/header') %>
 <%- include('../partials/navbar') %>
-
+<style>
+    body {
+        padding-top: 60px;
+    }
+</style>
 <div class="container mt-5">
     <h1>Registrations for <%= event.name %></h1>
     <p>Total Registrations: <%= event.registrations.length %></p>
@@ -10,6 +14,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Contact</th>
+                <th>Roll No</th>
             </tr>
         </thead>
         <tbody>
@@ -18,6 +23,8 @@
                     <td><%=registration.user.name%></td>
                     <td><%=registration.user.email%></td>
                     <td><%=registration.user.contactno%></td>
+                    <td><%=registration.user.rollno%></td>
+
                 </tr>
             <%})%>
         </tbody>

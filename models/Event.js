@@ -21,7 +21,7 @@ const eventSchema = new mongoose.Schema({
     },
     society: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Society', // Reference to Society model
+        ref: 'Society', 
         required: true
     },
     venue: {

@@ -63,6 +63,11 @@ router.patch('/societies/:id', isLoggedIn, isAdmin, isSocietyAdmin, validateSoci
         let { id } = req.params;
         let { name, img, type, description, email, instagram, linkedin } = req.body;
         const society = await Society.findByIdAndUpdate(id, { name, img, type, description, email, instagram, linkedin });
+
+        //Update associated events with the new society details
+        await Event.updateMany({ society: id }, { society: society._id });
+
+
         req.flash('success', 'Society Edited Successfully');
         res.redirect(`/societies/${id}`);
     } catch (e) {
@@ -74,10 +79,16 @@ router.patch('/societies/:id', isLoggedIn, isAdmin, isSocietyAdmin, validateSoci
 router.delete('/societies/:id', isLoggedIn, isAdmin, isSocietyAdmin, async (req, res) => {
     try {
         let { id } = req.params;
+        
+        // Update associated events - set their society field to null
+        await Event.updateMany({ society: id }, { society: null });
         await Society.findByIdAndDelete(id);
+
         req.flash('success', 'Society Deleted Successfully');
         res.redirect('/societies');
-    } catch (e) {
+    } 
+    
+    catch (e) {
         res.render('error', { err: e.message });
     }
 });

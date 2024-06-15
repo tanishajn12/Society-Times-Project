@@ -2,49 +2,49 @@
 <%- include('../partials/navbar') %>
 <%- include('../partials/flash') %>
 
-<div class="row mt-5">
-    <h2>Displaying a Particular Society</h2>
-    <div class="col-lg-6 society-card mt-5">
-        <div class="card shadow mt-3 mx-auto" style="width: 22rem;">
-            <div class="card-body">
-                <img src="<%=foundSociety.img%>" alt="<%= foundSociety.name %>" style="width: 100px; height: auto;">
-                <h3 class="card-title text-center"><%= foundSociety.name %></h3>
+<style>
+    body {
+        padding-top: 70px; /* Adjust this value based on the height of your navbar */
+    }
+    
+</style>
 
-                <h5 class="card-title">Type: <%= foundSociety.type %></h5>
-                <p class="card-text">Description: <%= foundSociety.description %></p>
-                <p class="card-text">Email: <%= foundSociety.email %></p>
-                <p class="card-text">
-                    Instagram: <a href="<%= foundSociety.instagram %>" target="_blank"><%= foundSociety.instagram %></a>
-                </p>
-                <p class="card-text">
-                    LinkedIn: <a href="<%= foundSociety.linkedin %>" target="_blank"><%= foundSociety.linkedin %></a>
-                </p>
-                <% if (currentUser && currentUser.role === "admin") { %>
-                    <a href="/societies/<%= foundSociety._id %>/edit" class="btn btn-info">Edit Society</a>
-                    <form class="d-inline-block" action="/societies/<%= foundSociety._id %>?_method=DELETE" method="POST">
-                        <button class="btn btn-danger btn-sm">Delete Society</button>
-                    </form>
-                <% } %>
-            </div>
+<div class="container mt-5" style="margin-top: 80px;">
+    <div class="row align-items-center">
+        <div class="col-md-3 text-center">
+            <img src="<%= foundSociety.img %>" alt="<%= foundSociety.name %>" class="img-fluid" style="max-width: 100%;">
+        </div>
+        <div class="col-md-9">
+            <h2><%= foundSociety.name %></h2>
+            <p><strong>Type:</strong> <%= foundSociety.type %></p>
+            <p><strong>Description:</strong> <%= foundSociety.description %></p>
+            <p><strong>Email:</strong> <%= foundSociety.email %></p>
+            <p><strong>Instagram:</strong> <a href="<%= foundSociety.instagram %>" target="_blank"><%= foundSociety.instagram %></a></p>
+            <p><strong>LinkedIn:</strong> <a href="<%= foundSociety.linkedin %>" target="_blank"><%= foundSociety.linkedin %></a></p>
+            <% if (currentUser && currentUser.role === "admin") { %>
+                <a href="/societies/<%= foundSociety._id %>/edit" class="btn btn-info">Edit Society</a>
+                <form class="d-inline-block" action="/societies/<%= foundSociety._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-danger btn-sm">Delete Society</button>
+                </form>
+            <% } %>
         </div>
     </div>
 
-    <div class="col-lg-6 mt-5">
-        <h2 class="display-5">Events by this Society</h2>
-        <div class="list-group">
-            <% for (let event of foundSociety.events) { %>
-                <a href="/events/<%= event._id %>" class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                        <img src="<%=event.img%>" alt="<%= event.name %>" class="img-thumbnail" style="width: 100px; height: auto;">
-                        <div class="ml-3">
-                            <h5 class="mb-1"><%= event.name %></h5>
-                            <p class="mb-1">Date: <%= event.date.toDateString() %></p>
-                            <small>Venue: <%= event.venue %></small>
-                        </div>
+    <div class="row mt-5">
+        <h2 class="display-5 mb-2"><%=foundSociety.name%> EVENTS</h2>
+        <% for (let event of foundSociety.events) { %>
+            <div class="col-md-4 mb-4">
+                <div class="card shadow">
+                    <img src="<%= event.img %>" class="card-img-top" alt="<%= event.name %>">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= event.name %></h5>
+                        <p class="card-text">Date: <%= event.date.toDateString() %></p>
+                        <p class="card-text">Venue: <%= event.venue %></p>
+                        <a href="/events/<%= event._id %>" class="btn btn-primary">View Event</a>
                     </div>
-                </a>
-            <% } %>
-        </div>
+                </div>
+            </div>
+        <% } %>
     </div>
 </div>
 

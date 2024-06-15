@@ -2,8 +2,33 @@
 <%- include('../partials/navbar') %>
 <%- include('../partials/flash') %>
 
+<style>
+    body {
+        padding-top:60px;
+    }
+    .event-card img {
+        max-width: 100%; /* Set maximum width */
+        height: auto; /* Maintain aspect ratio */
+        margin: 0 auto;
+    }
+    .event-card .card-body {
+        padding-top: 1rem;
+    }
+    .event-card .card-title {
+        font-weight: bold;
+        margin-top: 1rem;
+    }
+    .event-card .btn {
+        margin: 0.5rem 0;
+        font-weight: bold;
+    }
+    .event-card h6 {
+        font-weight: bold;
+        margin-top: 0.5rem;
+    }
+</style>
 <div class="container mt-5">
-    <h1>Displaying All The Events</h1>
+    <h1 class="text-center mb-4">SOCIETY EVENTS</h1>
     
     <div class="row">
         <% for (let event of events) { %>
@@ -12,10 +37,10 @@
                     <img class="card-img-top img-fluid" src="<%= event.img %>" alt="<%= event.name %>">
                     <div class="card-body">
                         <h3 class="card-title"><%= event.name %></h3>
-                        <h5 class="card-title">Date: <%= new Date(event.date).toDateString() %></h5>
-                        <h5 class="card-title">Time: <%= event.time %></h5>
-                        <p class="card-text">Society: <%= event.society %></p>
-                        <p class="card-text">Venue: <%= event.venue %></p>
+                        <h5 class="card-text">Society: <%= event.society ? event.society.name : 'N/A' %></h5>
+                        <h6 class="card-title">Date: <%= new Date(event.date).toDateString() %></h6>
+                        <h6 class="card-title">Time: <%= event.time %></h6>
+                        <h6 class="card-text">Venue: <%= event.venue %></h6>
                         <!-- <p class="card-text">Type: <%= event.type %></p> -->
                         <!-- <p class="card-text"><%= event.desc.substring(0, 100) %>...</p> -->
                         <!-- <% if (event.registerLink) { %>
@@ -23,17 +48,12 @@
                         <% } %> -->
                         <a href="/events/<%= event._id %>" class="btn btn-primary">View Event</a>
                     
-                        <%if(currentUser && currentUser.role === "admin"){%>
-                            <a href="/events/<%=event._id%>/edit" class="btn btn-warning">Edit Event</a>
-                            <form action="/events/<%=event.id%>?_method=DELETE" method="POST" class="d-inline">
-                              <button class="btn btn-danger" >Delete Product</button>
+                        <% if(currentUser && currentUser.role === "admin"){ %>
+                            <a href="/events/<%= event._id %>/edit" class="btn btn-warning">Edit Event</a>
+                            <form action="/events/<%= event._id %>?_method=DELETE" method="POST" class="d-inline">
+                              <button class="btn btn-danger">Delete Event</button>
                             </form>
-                        <%}%>
-                        <!-- <a href="/events/<%= event._id %>/edit" class="btn btn-warning">Edit Event</a>
-                        <form action="/events/<%= event._id %>?_method=DELETE" method="POST" class="d-inline">
-                            <button class="btn btn-danger">Delete Event</button>
-                        </form> -->
-                    
+                        <% } %>
                     </div>
                 </div>
             </div>
