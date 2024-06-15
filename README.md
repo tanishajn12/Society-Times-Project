@@ -13,7 +13,7 @@ Admin
 - View Event Registrations 
 - View Reviews of Students
 
-###Student
+Student
 - Sign Up using college email id
 - Browse Events & Register
 - Explore Different Societies
