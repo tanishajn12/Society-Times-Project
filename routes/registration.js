@@ -30,6 +30,7 @@ router.post('/events/:id/register', isLoggedIn, async (req,res)=>{
         });
 
         event.registrations.push(registration);
+        
         //save method is from mongo db hence await method
         await event.save();
         await registration.save(); 
@@ -41,7 +42,8 @@ router.post('/events/:id/register', isLoggedIn, async (req,res)=>{
     }
 
     catch(e) {
-        res.render('error',{err: e.message})
+        req.flash('error', 'Something went wrong');
+        res.redirect('/events');
     }
 })
 
