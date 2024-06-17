@@ -1,6 +1,8 @@
 
 
-# "Society Times - ![logo2](https://github.com/tanishajn12/Society-Times-Project/assets/119069305/99c267f7-80a7-4feb-bb01-975121f0db53)
+![logo2](https://github.com/tanishajn12/Society-Times-Project/assets/119069305/99c267f7-80a7-4feb-bb01-975121f0db53)
+
+** "Society Times **
 Event Registrations & Management"
 
 Project Description : -
