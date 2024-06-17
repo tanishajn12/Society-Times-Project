@@ -6,7 +6,7 @@
 
 .nav-item a {
     text-decoration: none;
-    color:black;
+    color:rgb(0, 62, 107);
     font-weight: 600;
     text-transform: uppercase;
     margin-right: 15px;
@@ -19,6 +19,8 @@
     background-color: white;
    
 }
+
+
 
 .nav-item a:hover{
     color:red;
