@@ -27,7 +27,7 @@
         <div class="d-flex" role="search">
           <% if (!currentUser) { %>
             <a class="mx-2" href="/login"><button class="btn btn-outline-info" type="submit">Login</button></a>
-            <a class="mx-2" href="/signup"><button class="btn btn-outline-info" type="submit">Signup</button></a>
+            <a class="mx-2" href="/register"><button class="btn btn-outline-info" type="submit">Signup</button></a>
           <% } else { %>
             <a href="#" class="nav-link text-capitalize">Hello <%= currentUser.username %></a>
             <a class="mx-2" href="/logout"><button class="btn btn-outline-info" type="submit">Logout</button></a>
