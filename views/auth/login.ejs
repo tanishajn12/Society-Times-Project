@@ -3,16 +3,22 @@
 <%-include('../partials/flash')%>
 
 <style>
+body {
+    background-color: rgb(255, 255, 255); /* Blue background */
+}
+
 .custom-card {
     background-color: #f8f9fa; /* Light gray background */
     border: 1px solid #dee2e6; /* Gray border */
-    border-radius: 0.25rem; /* Optional: rounded corners */
-    padding: 20px; /* Optional: padding inside the card */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for better visualization */
+    border-radius: 0.25rem; /* Rounded corners */
+    padding: 20px; /* Padding inside the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visualization */
 }
+
 .vh-100 {
     height: 100vh;
 }
+
 .divider:after,
 .divider:before {
     content: "";
@@ -20,15 +26,17 @@
     height: 1px;
     background: #eee;
 }
-h2{
-    font-family:Arial, Helvetica, sans-serif;
+
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
     margin-bottom: 25px;
     align-items: center;
-    
 }
+
 .h-custom {
     height: calc(100% - 73px);
 }
+
 @media (max-width: 450px) {
     .h-custom {
         height: 100%;
@@ -37,44 +45,22 @@ h2{
 </style>
 
 <section class="vh-100">
-  <div class="container-fluid h-custom">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-md-9 col-lg-6 col-xl-5">
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-          class="img-fluid" alt="Sample image">
-      </div>
-      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+  <div class="container-fluid h-custom d-flex justify-content-center align-items-center">
+    <div class="col-md-6 col-lg-4">
+      <div class="custom-card">
         <h2 class="text-center mb-4">Login Form</h2>
         <form action="/login" method="POST">
-          <!-- <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-            <p class="lead fw-normal mb-0 me-3">Sign in with</p>
-            <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-floating mx-1">
-              <i class="fab fa-facebook-f"></i>
-            </button>
-
-            <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-floating mx-1">
-              <i class="fab fa-twitter"></i>
-            </button>
-
-            <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-floating mx-1">
-              <i class="fab fa-linkedin-in"></i>
-            </button>
-          </div> -->
-
-          <!-- <div class="divider d-flex align-items-center my-4">
-            <p class="text-center fw-bold mx-3 mb-0">Or</p>
-          </div> -->
 
           <!-- Username input -->
           <div class="mb-3">
             <label for="username" class="form-label">UserName:</label>
             <input type="text" class="form-control" name="username" id="username" placeholder="Enter Your Username" required>
-        </div>
+          </div>
 
-        <div class="mb-3">
+          <div class="mb-3">
             <label for="password" class="form-label">Password:</label>
             <input type="password" class="form-control" name="password" id="password" placeholder="Enter Your Password">
-        </div>
+          </div>
 
           <div class="d-flex justify-content-between align-items-center">
             <!-- Checkbox -->
@@ -96,7 +82,6 @@ h2{
       </div>
     </div>
   </div>
-  
 </section>
 
 <script src="/js/script.js"></script>
