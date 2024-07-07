@@ -31,7 +31,7 @@ const eventSchema = new mongoose.Schema({
     },
     type: {
         type: String,
-        trim: true,
+        enum: ['Technical', 'Hackathon', 'Research','Coding Contest', 'Cultural','Seminar & Workshop', 'Conference','Sports','Games & Fun','Literature','Social Awareness'],
         required: true
     },
     desc: {
@@ -56,6 +56,18 @@ const eventSchema = new mongoose.Schema({
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Registration'
+        }
+    ],
+    registeredUsers : [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    ],
+    likedUsers : [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
         }
     ],
 });

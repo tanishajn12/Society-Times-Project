@@ -9,13 +9,13 @@
     
 </style>
 
-<div class="container mt-5" style="margin-top: 80px;">
+<div class="container mt-5" style="margin-top: 80px; margin-bottom: 50px">
     <div class="row align-items-center">
         <div class="col-md-3 text-center">
             <img src="<%= foundSociety.img %>" alt="<%= foundSociety.name %>" class="img-fluid" style="max-width: 100%;">
         </div>
         <div class="col-md-9">
-            <h2><%= foundSociety.name %></h2>
+            <h2 style="font-size:40px ; font-weight:bold"><%= foundSociety.name %></h2>
             <p><strong>Type:</strong> <%= foundSociety.type %></p>
             <p><strong>Description:</strong> <%= foundSociety.description %></p>
             <p><strong>Email:</strong> <%= foundSociety.email %></p>
@@ -26,18 +26,22 @@
                 <form class="d-inline-block" action="/societies/<%= foundSociety._id %>?_method=DELETE" method="POST">
                     <button class="btn btn-danger btn-sm">Delete Society</button>
                 </form>
-            <% } %>
+            <% } 
+                              
+            %>
         </div>
     </div>
 
+    <h2 style="font-size:30px ; font-weight:bold"class="display-5 mb-2">EVENTS</h2>
+
     <div class="row mt-5">
-        <h2 class="display-5 mb-2"><%=foundSociety.name%> EVENTS</h2>
+
         <% for (let event of foundSociety.events) { %>
             <div class="col-md-4 mb-4">
                 <div class="card shadow">
                     <img src="<%= event.img %>" class="card-img-top" alt="<%= event.name %>">
                     <div class="card-body">
-                        <h5 class="card-title"><%= event.name %></h5>
+                        <h5 class="card-title" style="font-weight:bold"><%= event.name %></h5>
                         <p class="card-text">Date: <%= event.date.toDateString() %></p>
                         <p class="card-text">Venue: <%= event.venue %></p>
                         <a href="/events/<%= event._id %>" class="btn btn-primary">View Event</a>

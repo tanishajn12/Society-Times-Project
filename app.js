@@ -10,7 +10,10 @@ const reviewRoutes = require("./routes/review");
 const eventRoutes = require("./routes/event");
 const registrationRoutes = require("./routes/registration")
 const societyRoutes = require("./routes/society")
+const contactRoute = require('./routes/contact');
+const eventApi = require("./routes/eventapi");
 const authRoutes = require("./routes/auth");
+const profileRoutes = require('./routes/profile');
 const passport= require('passport');
 const User = require("./models/User");
 const LocalStrategy = require('passport-local');
@@ -74,8 +77,10 @@ app.use(reviewRoutes);
 app.use(authRoutes);
 app.use(registrationRoutes);
 app.use(societyRoutes);
-// app.use(productApi);
-// app.use(cartRoutes);
+app.use(profileRoutes);
+app.use(eventApi);
+app.use(contactRoute)
+// app.use(analyticsRoutes)
 
 // seedDB(); //run only once
 

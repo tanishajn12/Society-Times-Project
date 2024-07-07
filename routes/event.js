@@ -1,6 +1,7 @@
 const express =  require("express");
 const Event = require('../models/Event');
 const Society = require('../models/Society');
+const User = require('../models/User');
 const Review = require('../models/Review');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
@@ -86,7 +87,7 @@ router.get('/events/:id/registrations', isLoggedIn,isEventAuthor, async (req, re
     res.render('events/registrations', { event });
 });
 
-router.get('/events/:id/edit',  async (req,res)=> {
+router.get('/events/:id/edit', isLoggedIn,isEventAuthor, async (req,res)=> {
     try{
         let {id} = req.params;
         let foundEvent = await Event.findById(id);
@@ -171,5 +172,72 @@ router.delete('/events/:id', isLoggedIn, isAdmin, isEventAuthor, async (req, res
         res.render('error', { err: e.message });
     }
 });
+
+// Function to fetch event analytics
+const getEventAnalytics = async (eventId) => {
+    try {
+        const event = await Event.findById(eventId).populate('registeredUsers');
+        if (!event) {
+            throw new Error('Event not found');
+        }
+
+        // Initialize counts
+        const branchCounts = {};
+        const yearCounts = {};
+
+        // Aggregate counts by branch and year
+        event.registeredUsers.forEach(user => {
+            const { branch, year } = user;
+
+            // Count by branch
+            if (branch) {
+                if (!branchCounts[branch]) {
+                    branchCounts[branch] = 0;
+                }
+                branchCounts[branch]++;
+            }
+
+            // Count by year
+            if (year) {
+                if (!yearCounts[year]) {
+                    yearCounts[year] = 0;
+                }
+                yearCounts[year]++;
+            }
+        });
+
+        return { branchCounts, yearCounts };
+    } catch (error) {
+        console.error('Error fetching event analytics:', error);
+        throw error; // Propagate error to be handled in route
+    }
+};
+
+// Route to render event analytics page
+router.get('/events/:id/analytics', isLoggedIn, isAdmin,isEventAuthor, async (req, res) => {
+    try {
+        const { id } = req.params;
+        
+        // Fetch event details
+        const event = await Event.findById(id);
+        if (!event) {
+            req.flash('error', 'Event not found');
+            return res.redirect('/events');
+        }
+
+        // Fetch analytics data
+        const analytics = await getEventAnalytics(id);
+
+        res.render('events/analytics', { branchCounts: analytics.branchCounts, yearCounts: analytics.yearCounts });
+    } 
+    
+    catch (error) {
+        console.error('Error in /events/:id/analytics route:', error);
+        req.flash('error', 'Failed to load analytics');
+        res.redirect('/events');
+    }
+});
+
+
 
 module.exports = router;
