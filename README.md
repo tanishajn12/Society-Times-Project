@@ -8,17 +8,27 @@ Society Times is a robust platform designed to streamline the registration and m
 
 ## Key Features :- 
 ### Admin : -
-1.**Create, Read, Update, Delete (CRUD) Events:** Administrators can easily manage event details, ensuring up-to-date information is available.
-2. **Add / Edit / Delete Their Societies**: Admins can add and manage societies under their purview.
-3. **View Event Registrations:** Gain insights into student participation and manage attendee lists.
-4. **View Reviews of Students:** Collect feedback on events to improve future planning.
-5. **Access To Event Analytics:** Access comprehensive analytics including like count, registration count, and breakdowns of participants by branch and year, providing a detailed overview of event performance and engagement.
-6. **Privacy and Authenticity:** Only the society admin and event author can edit the data added by them, ensuring data integrity and confidentiality.
+1. **Create, Read, Update, Delete (CRUD) Events:** Administrators can easily manage event details, ensuring up-to-date information is available.
+  
+2.  **Add / Edit / Delete Their Societies**: Admins can add and manage societies under their purview.
+   
+3.  **View Event Registrations:** Gain insights into student participation and manage attendee lists.
+   
+4.  **View Reviews of Students:** Collect feedback on events to improve future planning.
+    
+5.  **Access To Event Analytics:** Access comprehensive analytics including like count, registration count, and breakdowns of participants by branch and year, providing a detailed overview of event performance and engagement.
+  
+6.  **Privacy and Authenticity:** Only the society admin and event author can edit the data added by them, ensuring data integrity and confidentiality.
 
 ### Student :-
 1. **Sign Up Using College Email ID:** Secure and streamlined registration process for students.
+   
 2. **Browse Events & Register:** Explore and sign up for events effortlessly.
+   
 3.**Explore Different Societies**: Discover various societies and their activities within the institution.
+
 4. **Like Events & Add to Wishlist:** Keep track of favorite events and plan attendance.
+   
 5. **Filter Events According to Their Need:** Find events that match personal interests and schedules.
+   
 6. **Review Attended Events**: Provide feedback on events, helping improve future experiences
