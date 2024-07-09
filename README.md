@@ -1,5 +1,6 @@
 # SOCIETY TIMES
-**"Your daily bulletin for college society events & management"**
+## **"Your daily bulletin for college society events & management"**
+
 ![image](https://github.com/tanishajn12/Society-Times-Project/assets/119069305/1274a1db-10bc-4c91-9f88-d2188bb1d64d)
 
 ## Project Description : -
@@ -7,6 +8,9 @@ Society Times is a robust platform designed to streamline the registration and m
 
 
 ## Key Features :- 
+![image](https://github.com/tanishajn12/Society-Times-Project/assets/119069305/8dff9bfc-b065-4fb4-b76d-d27a0b3a8a44)
+
+## Functioning :-
 ### Admin : -
 1. **Create, Read, Update, Delete (CRUD) Events:** Administrators can easily manage event details, ensuring up-to-date information is available.
   
