@@ -11,7 +11,10 @@ Society Times is a robust platform designed to streamline the registration and m
 ![image](https://github.com/tanishajn12/Society-Times-Project/assets/119069305/8dff9bfc-b065-4fb4-b76d-d27a0b3a8a44)
 
 ## Functioning :-
-### Admin : -
+![image](https://github.com/tanishajn12/Society-Times-Project/assets/119069305/957d8416-31e0-4fdc-96b3-e382ca9b3dd5)
+
+
+### Admin Side : -
 1. **Create, Read, Update, Delete (CRUD) Events:** Administrators can easily manage event details, ensuring up-to-date information is available.
   
 2.  **Add / Edit / Delete Their Societies**: Admins can add and manage societies under their purview.
@@ -24,12 +27,12 @@ Society Times is a robust platform designed to streamline the registration and m
   
 6.  **Privacy and Authenticity:** Only the society admin and event author can edit the data added by them, ensuring data integrity and confidentiality.
 
-### Student :-
+### Student Side :-
 1. **Sign Up Using College Email ID:** Secure and streamlined registration process for students.
    
 2. **Browse Events & Register:** Explore and sign up for events effortlessly.
    
-3.**Explore Different Societies**: Discover various societies and their activities within the institution.
+3. **Explore Different Societies**: Discover various societies and their activities within the institution.
 
 4. **Like Events & Add to Wishlist:** Keep track of favorite events and plan attendance.
    
