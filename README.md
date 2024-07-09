@@ -15,7 +15,7 @@ Society Times is a robust platform designed to streamline the registration and m
 5. **Access To Event Analytics:** Access comprehensive analytics including like count, registration count, and breakdowns of participants by branch and year, providing a detailed overview of event performance and engagement.
 6. **Privacy and Authenticity:** Only the society admin and event author can edit the data added by them, ensuring data integrity and confidentiality.
 
-###Student :-
+### Student :-
 1. **Sign Up Using College Email ID:** Secure and streamlined registration process for students.
 2. **Browse Events & Register:** Explore and sign up for events effortlessly.
 3.**Explore Different Societies**: Discover various societies and their activities within the institution.
