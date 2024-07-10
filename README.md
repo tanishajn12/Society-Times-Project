@@ -3,7 +3,7 @@
 ![image](https://github.com/tanishajn12/Society-Times-Project/assets/119069305/1274a1db-10bc-4c91-9f88-d2188bb1d64d)
 
 ## Project Description : -
-Society Times is a robust platform designed to streamline the registration and management process for various society events within an institution. It aims to facilitate both administrators and students in managing and participating in society activities & events effectively, thereby enhancing student engagement and the overall college experience. Active participation in societies plays a crucial role in fostering community spirit, personal growth, and professional development among students. Society Times enhances the engagement and management of society events, making it easier for administrators to organize and for students to participate actively, ultimately contributing to a vibrant and dynamic college community.
+Society Times is a robust platform designed to streamline the registration and management process for various society events within an institution. It aims to facilitate both administrators and students in managing and participating in society activities & events effectively, thereby enhancing student engagement and the overall college experience. Active participation in societies plays a crucial role in fostering community spirit, personal growth, and professional development among students. Society Times enhances the engagement of students, making it easier for administrators to organize and for students to participate actively, ultimately contributing to a vibrant and dynamic college community.
 
 
 ## Key Features :- 
