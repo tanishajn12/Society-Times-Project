@@ -1,5 +1,4 @@
 # SOCIETY TIMES
-## **"Your daily bulletin for college society events & management"**
 
 ![image](https://github.com/tanishajn12/Society-Times-Project/assets/119069305/1274a1db-10bc-4c91-9f88-d2188bb1d64d)
 
