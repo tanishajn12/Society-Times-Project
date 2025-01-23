@@ -1,7 +1,7 @@
 # SOCIETY TIMES
 
 ### Demo video :- 
-### https://drive.google.com/file/d/1jEf68EvmzKHjLbztTYIhQa7e6DcbBhUl/view?usp=sharing
+### https://drive.google.com/file/d/1ovCGXCOFZQlEHPa78F3wJiqih9ZobXkX/view?usp=sharing
 
 ![image](https://github.com/tanishajn12/Society-Times-Project/assets/119069305/1274a1db-10bc-4c91-9f88-d2188bb1d64d)
 
